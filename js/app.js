@@ -73,6 +73,17 @@ Player.prototype.handleInput = function(allowedKeys) {
   }
 };
 
+var Heart = function(x, y) {
+  this.sprite = 'images/Heart.png';
+  this.x = x;
+  this.y = y;
+}
+
+Heart.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 45.45, 76.95);
+
+};
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -80,19 +91,13 @@ Player.prototype.handleInput = function(allowedKeys) {
 
 const allEnemies = [new Enemy, new Enemy, new Enemy, new Enemy, new Enemy];
 
-
-// function makeEnemies(rundomnr) {
-//   allEnemies.push[new Enemy];
-//   for (var i = 1; i < rundomnr; i++) {
-//     allEnemies.push[new Enemy];
-//     console.log(allEnemies)
-//   }
-// }
-//
-//   makeEnemies(10);
-
-
 const player = new Player;
+
+const first = new Heart(0, -18);
+const second = new Heart(45, -18);
+const third = new Heart(90, -18);
+
+const allHearts =[first, second, third]
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

@@ -80,7 +80,6 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
-        // checkEnemies();
         makeEnemies();
     }
 
@@ -94,6 +93,9 @@ var Engine = (function(global) {
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
+        });
+        allHearts.forEach(function(heart) {
+            heart.update(dt);
         });
         player.update();
     }
@@ -119,6 +121,8 @@ var Engine = (function(global) {
             numRows = 6,
             numCols = 5,
             row, col;
+
+
 
         // Before drawing, clear existing canvas
         ctx.clearRect(0,0,canvas.width,canvas.height)
@@ -154,7 +158,9 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
-
+        allHearts.forEach(function(heart) {
+            heart.render();
+        });
         player.render();
     }
 
@@ -174,6 +180,14 @@ var Engine = (function(global) {
           enemy.y + enemy.height > player.y) {
               player.x = 203;
               player.y = 391;
+              if (allHearts.length === 3) {
+               allHearts.splice(2,1);
+             } else if (allHearts.length === 2) {
+                allHearts.splice(1,1);
+              } else if (allHearts.length === 1) {
+                 allHearts.splice(0,1);
+               }
+
         }
       });
     }
@@ -197,7 +211,8 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Heart.png'
     ]);
     Resources.onReady(init);
 
