@@ -63,7 +63,7 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        reset();
+        // reset();
         lastTime = Date.now();
         main();
     }
@@ -169,8 +169,11 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
-    }
+      allEnemies.forEach(function(enemy) {
+          enemy.x = enemy.xposition[Math.floor(Math.random() * 5)];
+        });
+           allHearts.splice(0, 0, first, second, third);
+      }
 
     function checkCollisions() {
       allEnemies.forEach(function(enemy) {
@@ -186,17 +189,18 @@ var Engine = (function(global) {
                 allHearts.splice(1,1);
               } else if (allHearts.length === 1) {
                  allHearts.splice(0,1);
-               }
-
+                 reset();
+              }
         }
       });
     }
 
     function makeEnemies() {
       allEnemies.forEach(function(enemy) {
-          if ( enemy.x > 500 ) {
+          if (enemy.x > 500 ) {
               enemy.x = -150;
               enemy.y = enemy.yposition[Math.floor(Math.random() * 3)];
+              enemy.x = enemy.xposition[Math.floor(Math.random() * 5)];
 
         }
       });
@@ -212,7 +216,11 @@ var Engine = (function(global) {
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-boy.png',
-        'images/Heart.png'
+        'images/Heart.png',
+        'images/Gem_Blue.png',
+        'images/Gem_Green.png',
+        'images/Gem_Orange.png',
+        'images/Star.png'
     ]);
     Resources.onReady(init);
 

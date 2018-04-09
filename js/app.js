@@ -51,7 +51,7 @@ Player.prototype.update = function(dt) {
       setTimeout(() => {
         this.x = 203;
         this.y = 391;
-      }, 300);
+      }, 200);
 
     }
 };
@@ -83,6 +83,11 @@ Heart.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 45.45, 76.95);
 
 };
+
+Heart.prototype.update = function(dt) {
+
+}
+
 
 
 // Now instantiate your objects.
