@@ -22,7 +22,9 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        image = document.querySelector('.image'),
+        nr = 0;
 
     canvas.width = 505;
     canvas.height = 606;
@@ -63,7 +65,7 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        // reset();
+        start()
         lastTime = Date.now();
         main();
     }
@@ -83,6 +85,27 @@ var Engine = (function(global) {
         makeEnemies();
     }
 
+    function start() {
+      document.querySelector('.modal.start').style.display='block';
+      document.addEventListener('click', select, false);
+    }
+
+    function select(e) {
+
+      if (e.target.classList.contains('image_princess')) {
+        src = "images/char-princess-girl.png";
+        document.querySelector('.modal').style.display='none';
+    } else if (e.target.classList.contains('image_catgirl')) {
+      src = "images/char-cat-girl.png"
+      document.querySelector('.modal').style.display='none';
+    } else if (e.target.classList.contains('image_boy')) {
+      src = "images/char-boy.png"
+      document.querySelector('.modal').style.display='none';
+    }
+
+    }
+
+
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
      * their update() methods. It will then call the update function for your
@@ -97,6 +120,7 @@ var Engine = (function(global) {
         allHearts.forEach(function(heart) {
             heart.update(dt);
         });
+        gems.update();
         player.update();
     }
 
@@ -161,7 +185,9 @@ var Engine = (function(global) {
         allHearts.forEach(function(heart) {
             heart.render();
         });
+        gems.render();
         player.render();
+
     }
 
     /* This function does nothing but it could have been a good place to
@@ -169,11 +195,39 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-      allEnemies.forEach(function(enemy) {
+
+      document.querySelector('.modal.end').style.display='block';
+      document.addEventListener('click', playAgain, false);
+    }
+
+    function playAgain(e) {
+        document.querySelector('.modal.end').style.display='none';
+        allHearts.splice(0, 0, first, second, third);
+        allEnemies.forEach(function(enemy) {
           enemy.x = enemy.xposition[Math.floor(Math.random() * 5)];
         });
-           allHearts.splice(0, 0, first, second, third);
-      }
+
+
+        nr += 1;
+
+        const gameName = document.createElement('h4');
+        gameName.textContent = 'Game ' + nr;
+        document.querySelector('.gameHead').appendChild(gameName);
+
+        const gemResults = document.createElement('h4');
+        gemResults.textContent = gems.number;
+        document.querySelector('.gemHead').appendChild(gemResults);
+
+        const pointResults = document.createElement('h4');
+        pointResults.textContent = gems.point;
+        document.querySelector('.pointHead').appendChild(pointResults);
+
+        document.querySelector('.results').style.display='block';
+
+        gems.point = 0;
+        gems.number = 0;
+
+        }
 
     function checkCollisions() {
       allEnemies.forEach(function(enemy) {
@@ -217,10 +271,12 @@ var Engine = (function(global) {
         'images/enemy-bug.png',
         'images/char-boy.png',
         'images/Heart.png',
-        'images/Gem_Blue.png',
-        'images/Gem_Green.png',
-        'images/Gem_Orange.png',
-        'images/Star.png'
+        'images/gem-orange.png',
+        'images/gem-blue.png',
+        'images/gem-green.png',
+        'images/Star.png',
+        'images/char-cat-girl.png',
+        'images/char-princess-girl.png'
     ]);
     Resources.onReady(init);
 

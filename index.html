@@ -4,8 +4,35 @@
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
 </head>
 <body>
+
+    <section class="modal start">
+      <div class="content">
+      <h1>Welcome!</h1>
+      <p>Move the player with the arrows on your keyboard and try to pick up the gems, and reach the river! If you collect 5 gems, you can refill the hearts (life).</p>
+      <h2>Select a player</h2>
+      <img class="image_princess" src="images/char-princess-girl.png" alt="princess">
+      <img class="image_catgirl" src="images/char-cat-girl.png" alt="cat girl">
+      <img class="image_boy" src="images/char-boy.png" alt="boy">
+    </div>
+
+    </section>
+
+    <section class="modal end">
+      <div class="content">
+        <h1>Unfortunately the player was eaten by the bugs :((( </h1>
+        <button class="accept" type="button" name="button">Play again</button>
+      </div>
+    </section>
+
+    <section class="results">
+      <h2 class="gameHead">GAME</h4>
+      <h2 class="gemHead">GEM</h4>
+      <h2 class="pointHead">POINTS</h4>
+    </section>
+
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
