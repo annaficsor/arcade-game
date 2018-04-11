@@ -1,6 +1,28 @@
-frontend-nanodegree-arcade-game
-===============================
+# Udacity FEND project: Arcade Game
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+Fourth project in the Google-Udacity Scholarship 2018.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+
+
+
+The game board contains 8 different pairs of cards, so altogether there are 16 randomly arranged cards. The goal is to find each pair: flip over two hidden cards at a time to find a pair.
+
+When the game starts, a timer will start, and also there is a counter for moves. After every second flip, the _MOVES_ number will increase by one. At the top of the game board, there are three stars, after every seventh move, one star will disappear.
+
+- If the cards match, both cards stay visible.
+
+- If the cards do not match, they will be hidden again.
+
+- When all of the cards are visible, a congratulations window appear with your results. Choose to play another game by clicking the "Play again" button, or the user can check again the game board by clicking somewhere else on the page.
+
+- The scores will be saved, so every time the user finishes a game they can see the results.
+
+- If the user choose to restart a game,  the timer, the stars and the move counter will be reset, but the previous results won't disappear.
+
+
+## Built With
+Vanilla JavaScript
+
+[Animate CSS](https://daneden.github.io/animate.css/)
+
+[Normalize CSS](https://necolas.github.io/normalize.css/)
