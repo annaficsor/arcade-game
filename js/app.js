@@ -35,7 +35,6 @@ var Player = function(sprite) {
   this.width = 70;
   this.height = 83;
   this.point = 0;
-
 };
 
 // Update the player's position and the character image
@@ -75,7 +74,7 @@ var Heart = function(x, y) {
   this.sprite = 'images/Heart.png';
   this.x = x;
   this.y = y;
-}
+};
 
 // Draw the hearts on the screen in a different size
 Heart.prototype.render = function() {
@@ -83,14 +82,14 @@ Heart.prototype.render = function() {
 };
 
 // Update the heart's position
-Heart.prototype.update = function(dt) {}
+Heart.prototype.update = function(dt) {};
 
 // Gems that the player can collect for more points and hearts
 var Gem = function(image) {
   this.yposition = [80.375, 163.375, 246.375];
   this.xposition = [13.625, 114.625, 215.625, 316.625, 417.625];
   this.images = ['images/gem-green.png', 'images/gem-orange.png', 'images/Star.png', 'images/gem-blue.png'];
-  this.sprite = this.images[Math.floor(Math.random() * 4)];;
+  this.sprite = this.images[Math.floor(Math.random() * 4)];
   this.x = this.xposition[Math.floor(Math.random() * 5)];
   this.y = this.yposition[Math.floor(Math.random() * 3)];
   this.width = 70;
@@ -143,7 +142,7 @@ Gem.prototype.render = function() {
 };
 
 // Enemies in an array
-const allEnemies = [new Enemy, new Enemy, new Enemy, new Enemy, new Enemy];
+const allEnemies = [new Enemy(), new Enemy(), new Enemy(), new Enemy(), new Enemy()];
 
 // Player
 var src = 'images/char-cat-girl.png';
@@ -156,7 +155,7 @@ const third = new Heart(90, -18);
 const allHearts = [first, second, third];
 
 // Gem
-const gems = new Gem;
+const gems = new Gem();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
