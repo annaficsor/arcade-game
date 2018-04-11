@@ -196,17 +196,20 @@ var Engine = (function(global) {
      */
     function reset() {
 
-      document.querySelector('.modal.end').style.display='block';
+      document.querySelector('.modal.end').style.display ='block';
       document.addEventListener('click', playAgain, false);
+      document.removeEventListener('keyup', keyup);
     }
 
     function playAgain(e) {
         document.querySelector('.modal.end').style.display='none';
+        document.addEventListener('keyup', keyup);
         allHearts.splice(0, 0, first, second, third);
         allEnemies.forEach(function(enemy) {
           enemy.x = enemy.xposition[Math.floor(Math.random() * 5)];
         });
-
+        gems.x = gems.xposition[Math.floor(Math.random() * 5)];
+        gems.y = gems.yposition[Math.floor(Math.random() * 3)];
 
         nr += 1;
 
@@ -222,7 +225,7 @@ var Engine = (function(global) {
         pointResults.textContent = gems.point;
         document.querySelector('.pointHead').appendChild(pointResults);
 
-        document.querySelector('.results').style.display='block';
+        document.querySelector('.results').style.display='grid';
 
         gems.point = 0;
         gems.number = 0;
@@ -244,6 +247,7 @@ var Engine = (function(global) {
               } else if (allHearts.length === 1) {
                  allHearts.splice(0,1);
                  reset();
+
               }
         }
       });
