@@ -1,28 +1,24 @@
 # Udacity FEND project: Arcade Game
 
-Fourth project in the Google-Udacity Scholarship 2018.
+Fourth project in the Google-Udacity Scholarship 2018 (built with Vanilla JS).
 
+## How it works
 
+The main goal is to reach the water with your avatar, and collect as many gems as you can.
 
+When the game starts, you can choose an avatar. There is three image, and you can select the one you want with a click on it. After the selection, the game page will appear, and you can start hunting the gems.
 
-The game board contains 8 different pairs of cards, so altogether there are 16 randomly arranged cards. The goal is to find each pair: flip over two hidden cards at a time to find a pair.
+You can move your player with the arrows on your keyboard.
 
-When the game starts, a timer will start, and also there is a counter for moves. After every second flip, the _MOVES_ number will increase by one. At the top of the game board, there are three stars, after every seventh move, one star will disappear.
+At the top of the game, you can see three hearts, these represent the life you have in the game. You can see there also how many gems you have collected, and how many points you have (1 gem = 250 points, reach the river = 500 points).
 
-- If the cards match, both cards stay visible.
+- If the player runs into a bug one heart will disappear, and the player goes back to the starting point.
 
-- If the cards do not match, they will be hidden again.
+- 5 gems = 1 heart, so if you lost a heart, but you have more than 5 gems, the hearts will refill.  
 
-- When all of the cards are visible, a congratulations window appear with your results. Choose to play another game by clicking the "Play again" button, or the user can check again the game board by clicking somewhere else on the page.
+- When the player lost all of the hearts, the game is over. You can choose to play again, and in this case,m you can see your earlier results.
 
-- The scores will be saved, so every time the user finishes a game they can see the results.
+### Built With
 
-- If the user choose to restart a game,  the timer, the stars and the move counter will be reset, but the previous results won't disappear.
-
-
-## Built With
-Vanilla JavaScript
-
-[Animate CSS](https://daneden.github.io/animate.css/)
-
-[Normalize CSS](https://necolas.github.io/normalize.css/)
+Vanilla JS.
+Udacity provided visual assets and a game loop engine.
