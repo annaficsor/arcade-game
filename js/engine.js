@@ -202,6 +202,7 @@ var Engine = (function(global) {
    */
   function playAgain(e) {
     document.querySelector('.modal.end').style.display = 'none';
+    document.removeEventListener('click', playAgain, false);
     document.addEventListener('keyup', keyup);
     allHearts.splice(0, 0, first, second, third);
     allEnemies.forEach(function(enemy) {
